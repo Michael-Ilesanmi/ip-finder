@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+  <link rel="stylesheet" href="./css/output.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <title>Frontend Mentor | IP Address Tracker</title>
+</head>
+<body>
+  <main class="flex flex-col min-h-full justify-stretch bg-blue-400">
+    <section class="bg-blue-500 bg-no-repeat bg-cover bg-[url('./../images/pattern-bg-desktop.png')] w-full min-h-fit">
+      <div class="w-full mx-auto flex flex-col items-center pt-24 px-4 space-y-6 relative">
+        <h1 class="font-semibold text-3xl text-white text-center">
+          IP Address Tracker
+        </h1>
+        <form onsubmit="event.preventDefault();" class="w-11/12 md:w-5/12 mx-auto">
+          <fieldset class="flex items-stretch space-x-0 space-y-0 rounded-xl overflow-clip w-full max-w-full">
+            <input class="grow py-4 px-6 focus:ring-0 focus:outline-none focus:border-0" type="text" name="ip_address" id="ip_address" placeholder="Search for any IP address or domain" required >
+            <button onclick="checkIP()" type="submit" class="shrink px-4 md:px-8 bg-black hover:bg-[#232323] transition ease-linear text-white shadow-md">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </fieldset>
+        </form>
+        <div class="w-11/12 lg:w-8/12 rounded-xl p-4 md:p-6 bg-white grid justify-center grid-rows-4 md:grid-rows-1 md:grid-cols-4 z-[999] top-1/2 translate-y-1/2 shadow-xl !-mt-[35%] sm:!mt-0" id="resultContainer">
+          <div class="text-center md:text-left">
+            <p class="text-gray-400 text-xs md:text-sm font-medium mb-2 md:mb-4">
+              IP Address
+            </p>
+            <p class="text-base md:text-xl font-semibold" id="resIPAddress">
+              -.-.-.-
+            </p>
+          </div>
+          <div class="text-center md:text-left">
+            <p class="text-gray-400 text-xs md:text-sm font-medium mb-2 md:mb-4">
+              Location
+            </p>
+            <p class="text-base md:text-xl font-semibold" id="resLocation">
+              -
+            </p>
+          </div>
+          <div class="text-center md:text-left">
+            <p class="text-gray-400 text-xs md:text-sm font-medium mb-2 md:mb-4">
+              Timezone
+            </p>
+            <p class="text-base md:text-xl font-semibold" id="resTimezone">
+              -
+            </p>
+          </div>
+          <div class="text-center md:text-left">
+            <p class="text-gray-400 text-xs md:text-sm font-medium mb-2 md:mb-4">
+              ISP
+            </p>
+            <p class="text-base md:text-xl font-semibold" id="resISP">
+              -
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-blue-400 grow w-full h-grow h-full">
+      <div id="map" class="min-h-[500px] grow"></div>
+    </section>
+  </main>
+  <script src="./js/ip.service.js"></script>
+  <script src="./js/loader.js"></script>
+</body>
+</html>
